@@ -20,7 +20,7 @@ import './mock';
 const store = createStore(rootReducer);
 
 function Index() {
-  const [lang, setLang] = useStorage('arco-lang', 'en-US');
+  const [lang, setLang] = useStorage('arco-lang', 'zh-CN');
   const [theme, setTheme] = useStorage('arco-theme', 'light');
 
   function getArcoLocale() {
@@ -37,12 +37,12 @@ function Index() {
   function fetchUserInfo() {
     store.dispatch({
       type: 'update-userInfo',
-      payload: { userLoading: true },
+      payload: { userLoading: true }
     });
     axios.get('/api/user/userInfo').then((res) => {
       store.dispatch({
         type: 'update-userInfo',
-        payload: { userInfo: res.data, userLoading: false },
+        payload: { userInfo: res.data, userLoading: false }
       });
     });
   }
@@ -63,7 +63,7 @@ function Index() {
     lang,
     setLang,
     theme,
-    setTheme,
+    setTheme
   };
 
   return (
@@ -72,14 +72,14 @@ function Index() {
         locale={getArcoLocale()}
         componentConfig={{
           Card: {
-            bordered: false,
+            bordered: false
           },
           List: {
-            bordered: false,
+            bordered: false
           },
           Table: {
-            border: false,
-          },
+            border: false
+          }
         }}
       >
         <Provider store={store}>
